@@ -11,7 +11,7 @@ import {
 interface User {
   id: number;
   name: string;
-  username: string;
+  water_intake: number;
   email: string;
 }
 
@@ -21,7 +21,7 @@ export default async function UsersTable({ users }: { users: User[] }) {
       <TableHead>
         <TableRow>
           <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Username</TableHeaderCell>
+          <TableHeaderCell>Water</TableHeaderCell>
           <TableHeaderCell>Email</TableHeaderCell>
         </TableRow>
       </TableHead>
@@ -30,7 +30,7 @@ export default async function UsersTable({ users }: { users: User[] }) {
           <TableRow key={user.id}>
             <TableCell>{user.name}</TableCell>
             <TableCell>
-              <Text>{user.username}</Text>
+              <Text>{user.water_intake}</Text>
             </TableCell>
             <TableCell>
               <Text>{user.email}</Text>

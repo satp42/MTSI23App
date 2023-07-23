@@ -13,15 +13,15 @@ export default async function IndexPage({
   const search = searchParams.q ?? '';
   const users = await queryBuilder
     .selectFrom('users')
-    .select(['id', 'name', 'username', 'email'])
+    .select(['id', 'name', 'water_intake', 'email'])
     .where('name', 'like', `%${search}%`)
     .execute();
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
-      <Title>Users</Title>
+      <Title>Leaderboard</Title>
       <Text>
-        A list of users retrieved from a MySQL database (PlanetScale).
+        See where you compare to the rest of the healthy hydraters on <strong>Sip</strong>.
       </Text>
       <Search />
       <Card className="mt-6">
