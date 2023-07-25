@@ -5,34 +5,34 @@ import { Card, AreaChart, Title, Text } from '@tremor/react';
 const data = [
   {
     Month: 'Jan 21',
-    Sales: 2890,
-    Profit: 2400
+    'Your Intake': 10,
+    'Leaderboard Average': 4
   },
   {
     Month: 'Feb 21',
-    Sales: 1890,
-    Profit: 1398
+    'Your Intake': 9,
+    'Leaderboard Average': 11
   },
   {
     Month: 'Jan 22',
-    Sales: 3890,
-    Profit: 2980
+    'Your Intake': 20,
+    'Leaderboard Average': 7
   }
 ];
 
 export default function Example() {
   return (
     <Card className="mt-8">
-      <Title>Performance</Title>
-      <Text>Comparison between Sales and Profit</Text>
+      <Title>Weekly Intake</Title>
+      <Text>Comparison between leaderboard average and your water intake</Text>
       <AreaChart
         className="mt-4 h-80"
         data={data}
-        categories={['Sales', 'Profit']}
+        categories={['Your Intake', 'Leaderboard Average']}
         index="Month"
         colors={['indigo', 'fuchsia']}
         valueFormatter={(number: number) =>
-          `$ ${Intl.NumberFormat('us').format(number).toString()}`
+          `${Intl.NumberFormat('us').format(number).toString()} cups`
         }
         yAxisWidth={60}
       />

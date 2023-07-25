@@ -16,6 +16,8 @@ interface User {
 }
 
 export default async function UsersTable({ users }: { users: User[] }) {
+  let sortedUsers = [... users];
+  sortedUsers.sort((a, b) => b.water_intake - a.water_intake);
   return (
     <Table>
       <TableHead>
@@ -26,7 +28,7 @@ export default async function UsersTable({ users }: { users: User[] }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {users.map((user) => (
+        {sortedUsers.map((user) => (
           <TableRow key={user.id}>
             <TableCell>{user.name}</TableCell>
             <TableCell>
