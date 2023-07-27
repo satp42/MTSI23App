@@ -6,7 +6,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
-import newSVG from '../public/img/logo.svg';
+import newSVG from '../pages/img/logo.svg';
 
 const navigation = [
   { name: 'Leaderboard', href: '/' },
