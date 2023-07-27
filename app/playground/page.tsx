@@ -21,25 +21,25 @@ export default function PlaygroundPage() {
           <>
             <Card key={item.category} className="flex flex-col">
               <Title className='text-xl'>{item.category}</Title>
-              <Text className='pb-2'>Track how much water you drank today</Text>
+              <Text className='pb-4'>Track how much water you drank today</Text>
               <Flex
                 justifyContent="center"
                 alignItems="baseline"
                 className="self-center pb-2"
               >
-                <Metric className='text-7xl'>{item.liquid}</Metric>
+                <Metric className='text-6xl px-2'>{item.liquid}</Metric>
                 <Text>cups</Text>
               </Flex>
             </Card>
             <Card key={item.title} className="flex flex-col">
               <Title className='text-xl'>{item.title}</Title>
-              <Text className='pb-2'>Track how many sips you took today</Text>
+              <Text className='pb-4'>Track how many sips you took today</Text>
               <Flex
                 justifyContent="center"
                 alignItems="baseline"
                 className="self-center pb-2"
               >
-                <Metric className='text-7xl'>{item.sips}</Metric>
+                <Metric className='text-6xl'>{item.sips}</Metric>
                 <Text>sips</Text>
               </Flex>
             </Card>
