@@ -3,17 +3,54 @@
 import { Card, Metric, Text, Title, Flex, Grid } from '@tremor/react';
 import Image from 'next/image';
 import Chart from './chart';
+import axios from 'axios';
+import { useEffect, useState, FC } from 'react';
 
-const data = [
-  {
-    category: 'Water Intake',
-    liquid: 24,
-    title: 'Sip Count',
-    sips: 7
-  }
-];
 
 export default function PlaygroundPage() {
+  const [arduinoLiquid, setArduinoLiquid] = useState<number>(0);
+  const [lastFetchTime, setLastFetchTime] = useState<string>(new Date().toISOString());
+
+  // The function to handle POST requests
+  const handlePostRequest = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/api/data', { liquid: 20 });
+
+      if (response.status === 200) {
+        setLastFetchTime(new Date().toISOString());  // Update 'lastFetchTime'
+      }
+    } catch (error) {
+      console.error(`Error in POST request: ${error}`);
+    }
+  };
+
+  // The function to fetch data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/data');
+
+        if (response.data && response.data.liquid) {
+          setArduinoLiquid(response.data.liquid);  // Update 'arduinoLiquid'
+          console.log(response.data.liquid);
+        }
+      } catch (error) {
+        console.error(`Error fetching data: ${error}`);
+      }
+    };
+
+    fetchData();
+  }, [lastFetchTime]);  // React runs this function when 'lastFetchTime' changes
+
+
+  const data = [
+    {
+      category: 'Water Intake',
+      liquid: arduinoLiquid,
+      title: 'Sip Count',
+      sips: 0,
+    },
+  ];
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
       <Grid numItemsSm={2} numItemsLg={3} className="gap-6 h-auto grid-auto-rows-fr">
